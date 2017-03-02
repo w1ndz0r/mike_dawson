@@ -14,5 +14,3 @@ crit1.talk()
 crit2.talk()
 
 input("\nНажмите Enter чтобы выйтию")
-
-11
