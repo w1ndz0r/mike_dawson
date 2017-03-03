@@ -7,15 +7,15 @@ class Card(object):
     def __init__(self, rank, suit, face_up = True):
         self.rank = rank
         self.suit = suit
-        self.face_up = face_up
+        self.is_face_up = face_up
     def __str__(self):
-        if self.face_up:
+        if self.is_face_up:
             rep = self.rank + self.suit
         else:
             rep = "XX"
         return rep
     def flip(self):
-        self.face_up = not self.face_up
+        self.is_face_up = not self.is_face_up
 
 class Hand(object):
     """Рука - набор карт на руках у одного игрока."""
