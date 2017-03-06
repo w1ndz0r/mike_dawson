@@ -1,6 +1,5 @@
-import win32api
-import pythoncom
-import pyHook
+import win32api, win32con, pythoncom, pyHook
+from threading import Timer
 
 ###
 #def OnKeyboardEventAll(event):
@@ -32,9 +31,18 @@ def OnKeyboardEvent(event):
             print("Нажато F12")
     return True
 
+main_thread_id = win32api.GetCurrentThreadId()
+
+def exit_on_timer():
+    win32api.PostThreadMessage(main_thread_id, win32con.WM_QUIT, 0, 0)
+    print("Выходим из треда:", main_thread_id)
+    second_thread_id = win32api.GetCurrentThreadId()
+    print("Второй тред: ", second_thread_id)
+
+t = Timer(5.0, exit_on_timer) # Quit after 5 seconds
+t.start()
+
 hm = pyHook.HookManager()       # создание экземпляра класса HookManager
 hm.KeyAll = OnKeyboardEvent     # отслеживаем нажатия клавиш
 hm.HookKeyboard()               # вешаем хук
 pythoncom.PumpMessages()        # ловим сообщения
-
-
