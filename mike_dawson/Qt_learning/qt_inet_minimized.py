@@ -1,5 +1,6 @@
 # http://stackoverflow.com/questions/16036336/how-to-change-minimize-event-behavior-in-pyqt-or-pyside
 # http://stackoverflow.com/questions/4044994/hide-pyqt-app-from-taskbar
+# http://stackoverflow.com/questions/758256/pyqt4-minimize-to-tray
 
 from PyQt4 import QtGui, QtCore
 
