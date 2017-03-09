@@ -13,4 +13,8 @@ header = {'Authorization: TOKEN': client_key}
 data = {'secret_key': secret_key, 'image': encoded_image}
 
 r = requests.post(api_url, headers=header, data=data)
-print(r.json)
+
+
+short_link = r.json().get('data').get('short_link')
+
+print(short_link)

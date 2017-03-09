@@ -1,4 +1,4 @@
-import win32api, pythoncom, pyHook, requests, base64, sys, threading
+import win32api, pythoncom, pyHook, requests, base64, sys, threading, webbrowser
 from datetime import datetime
 from PyQt4.QtGui import QPixmap, QApplication
 
@@ -18,6 +18,7 @@ def send_screenshot():
         encoded_image = base64.b64encode(image_file.read())
     data = {'secret_key': SECRET_KEY, 'image': encoded_image}
     r = requests.post(API_URL, headers=HEADER, data=data)
+    webbrowser.open(r.json().get('data').get('short_link'))
     print("Отправлено")
     return True
 
